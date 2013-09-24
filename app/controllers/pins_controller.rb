@@ -4,7 +4,7 @@ before_filter :authenticate_user!, except: [:index] #signup before being able to
   # GET /pins
   # GET /pins.json
   def index
-    @pins = Pin.all # change Pin to current_user.pins to only show user's pins
+    @pins = Pin.order("created_at desc") # change Pin to current_user.pins to only show user's pins
 
     respond_to do |format|
       format.html # index.html.erb
